@@ -51,9 +51,9 @@ export const BasicTable = () => {
                             prepareRow(row)
                             return (
                                 <tr {...row.getRowProps()}>
-                                    {row.cells.map((cell) => {
+                                    {row.cells.map((cell) => (
                                         <td {...cell.getCellProps()}> {cell.render('Cell')} </td>
-                                    })}
+                                    ))}
 
                                 </tr>
                             )
