@@ -2,8 +2,7 @@ import React, { useMemo } from "react"
 import { useTable } from "react-table"
 import MOCK_DATA from './MOCK_DATA.json'
 import { COLUMNS } from './columns'
-// import ReactTable from "react-table-6";  
-// import "react-table-6/react-table.css" 
+import './table.css' 
 
 export const BasicTable = () => {
 
