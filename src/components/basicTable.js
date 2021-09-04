@@ -2,7 +2,7 @@ import React, { useMemo } from "react"
 import { useTable } from "react-table"
 import MOCK_DATA from './MOCK_DATA.json'
 import { COLUMNS } from './columns'
-import './table.css' 
+import './table.css'
 
 export const BasicTable = () => {
 
@@ -22,6 +22,7 @@ export const BasicTable = () => {
         getTableProps,
         getTableBodyProps,
         headerGroups,
+        footerGroups,
         rows,
         prepareRow
     } = tableInstance
@@ -31,15 +32,15 @@ export const BasicTable = () => {
             <table {...getTableProps()}>
                 <thead>
 
-                   {
-                       headerGroups.map((headerGroup) => (
-                           <tr {...headerGroup.getHeaderGroupProps()}>
+                    {
+                        headerGroups.map((headerGroup) => (
+                            <tr {...headerGroup.getHeaderGroupProps()}>
                                 {headerGroup.headers.map((column) => (
                                     <th {...column.getHeaderProps()}> {column.render('Header')} </th>
                                 ))}
-                           </tr>
-                       ))
-                   }
+                            </tr>
+                        ))
+                    }
 
                 </thead>
 
@@ -58,9 +59,28 @@ export const BasicTable = () => {
                             )
                         })
                     }
-
-
                 </tbody>
+
+                <tfoot>
+                    {
+                        footerGroups.map(footerGroup => (
+                            <tr {...footerGroup.getFooterGroupProps()}>
+                                {
+                                    footerGroup.headers.map(column => (
+                                        <td {...column.getFooterProps()}>
+                                            {
+                                                 column.render('Footer') 
+                                            }
+                                        </td>
+                                    ))
+                                }
+                            </tr>
+                        ))
+                    }
+
+                </tfoot>
+
+
             </table>
 
         </div>
