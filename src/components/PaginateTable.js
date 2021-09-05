@@ -20,7 +20,7 @@ export const PaginateTable = () => {
         useFilters, // for column filters
         useGlobalFilter,
         usePagination
-        )
+    )
 
     const {
         getTableProps,
@@ -32,10 +32,14 @@ export const PaginateTable = () => {
         setGlobalFilter,
         nextPage,
         previousPage,
+        canNextPage,
+        canPreviousPage,
+        pageOptions,
         prepareRow
     } = tableInstance
 
     const { globalFilter } = state
+    const { pageIndex } = state
 
     return (
 
@@ -58,7 +62,7 @@ export const PaginateTable = () => {
 
                                         <div>
                                             {/* column filter */}
-                                            { column.canFilter ? column.render('Filter') : null }
+                                            {column.canFilter ? column.render('Filter') : null}
                                         </div>
 
                                     </th>
@@ -107,9 +111,12 @@ export const PaginateTable = () => {
 
 
             </table>
-
-            <button onClick={ () => previousPage() }>Previous</button>
-            <button onClick={ () => nextPage() }>Next</button>
+            Page { ' ' }
+            <span>
+               <strong> {pageIndex + 1} of { pageOptions.length } </strong>
+            </span> { ' ' }
+            <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
+            <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
 
 
         </div>
