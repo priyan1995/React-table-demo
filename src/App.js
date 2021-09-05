@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link  } from 'react-router-dom'
 import { BasicTable } from './components/basicTable';
 import { BasicSortTable } from './components/sortTable';
 import { GlobalFilterTable } from './components/globalFilterTable';
+import { PaginateTable } from './components/PaginateTable';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Link to="/">Table</Link>
         <span> | </span>
         <Link to="/filter-table">Filtered Table</Link>
+        <span> | </span>
+        <Link to="/paginate-table">Paginated Table</Link>
 
         <Switch>
 
@@ -28,6 +31,10 @@ function App() {
 
           <Router path="/filter-table">
             <GlobalFilterTable />
+          </Router>
+
+          <Router path="/paginate-table">
+            <PaginateTable />
           </Router>
 
 
