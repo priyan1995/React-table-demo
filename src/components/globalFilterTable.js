@@ -1,5 +1,5 @@
 import React, { useMemo } from "react"
-import { useSortBy, useTable, useGlobalFilter } from "react-table"
+import { useSortBy, useTable, useGlobalFilter, useFilters } from "react-table"
 import MOCK_DATA from './MOCK_DATA.json'
 import { COLUMNS } from './columns'
 import './table.css'
@@ -16,7 +16,9 @@ export const GlobalFilterTable = () => {
         columns,
         data
 
-    }, useGlobalFilter)
+    },
+        useFilters, // for column filters
+        useGlobalFilter)
 
     const {
         getTableProps,
@@ -49,6 +51,12 @@ export const GlobalFilterTable = () => {
                                         <span>
                                             {column.isSorted ? (column.isSortedDesc ? 'V' : '^') : ''}
                                         </span>
+
+                                        <div>
+                                            {/* column filter */}
+                                            { column.canFilter ? column.render('Filter') : null }
+                                        </div>
+
                                     </th>
                                 ))}
                             </tr>
