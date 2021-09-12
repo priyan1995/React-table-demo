@@ -35,12 +35,13 @@ export const PaginateTable = () => {
         canPreviousPage,
         pageOptions,
         gotoPage,
+        setPageSize,
         pageCount,
         prepareRow
     } = tableInstance
 
     const { globalFilter } = state
-    const { pageIndex } = state
+    const { pageIndex, pageSize } = state
 
     return (
 
@@ -110,8 +111,16 @@ export const PaginateTable = () => {
                             const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
                             gotoPage(pageNumber)
                         }}
-                    style={{ width: '50px' }}/>
+                        style={{ width: '50px' }} />
                 </span>
+
+                <select value={pageSize} onChange={(e) => setPageSize(Number(e.target.value))}>
+                    { [10,25,50].map( (pageSize) => (
+                        <option key={pageSize} value={pageSize}>
+                            Show {pageSize}
+                            </option>
+                    ) ) }
+                </select>
 
 
                 <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
