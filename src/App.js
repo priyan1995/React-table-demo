@@ -4,6 +4,7 @@ import { BasicTable } from './components/basicTable';
 import { BasicSortTable } from './components/sortTable';
 import { GlobalFilterTable } from './components/globalFilterTable';
 import { PaginateTable } from './components/PaginateTable';
+import { ColumnOrder } from './components/ColumnOrder';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Link to="/filter-table">Filtered Table</Link>
         <span> | </span>
         <Link to="/paginate-table">Paginated Table</Link>
+        <span> | </span>
+        <Link to="/column-order">Column Order</Link>
 
         <Switch>
 
@@ -37,6 +40,9 @@ function App() {
             <PaginateTable />
           </Router>
 
+          <Router path="/column-order">
+            <ColumnOrder />
+          </Router>
 
         </Switch>
 
